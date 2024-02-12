@@ -46,12 +46,15 @@ class TestFeatures(TestCase):
         scaler.fit(data)
         assert (scaler.mean == expected).all(), "scaler fit does not return expected mean {}. Got {}".format(expected, scaler.mean)
         
+
     def test_standard_scaler_transform(self):
         scaler = StandardScaler()
-        data = [[0, 0], [0, 0], [1, 1], [1, 1]]
-        expected = np.array([[-1., -1.], [-1., -1.], [1., 1.], [1., 1.]])
+        data = [[0, 0], [0, 0], [1, 1], [1, 1]]  
         scaler.fit(data)
-        assert (result == expected).all(), "Scaler transform does not return expected values. Expect {}. Got: {}".format(expected.reshape(1,-1), result.reshape(1,-1))
+        result = scaler.transform(data)
+        expected = np.array([[-1., -1.], [-1., -1.], [1., 1.], [1., 1.]])
+        assert (result == expected).all(), "Scaler transform does not return expected values. Expect {}. Got: {}".format(expected, result)
+
         
     def test_standard_scaler_single_value(self):
         data = [[0, 0], [0, 0], [1, 1], [1, 1]]
@@ -63,7 +66,7 @@ class TestFeatures(TestCase):
 
     # TODO: Add a test of your own below this line
 
-     def test_standard_scaler_single_feature(self):
+    def test_standard_scaler_single_feature(self):
         scaler = StandardScaler()
         data = [[8], [4], [9], [2], [1]]
         # After fitting, the mean of a single feature should be 0
@@ -72,6 +75,8 @@ class TestFeatures(TestCase):
         expected = np.array([[0]])  # The expected result after scaling
         # Check if the result is close enough to zero, allowing for floating point error.
         assert np.isclose(result, expected).all(), "Scaler transform for a single feature does not return expected value 0. Got: {}".format(result)
-         
+
+    #Added test_standard_scaler_single_feature test to check scaling to mean of 0 is working properly or not
+    
 if __name__ == '__main__':
     unittest.main()
