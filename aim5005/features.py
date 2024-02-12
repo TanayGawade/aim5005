@@ -2,7 +2,7 @@ import numpy as np
 from typing import List, Tuple
 
 class MinMaxScaler:
-    def __init__(self):
+    def _init__(self):
         self.minimum = None
         self.maximum = None
         
