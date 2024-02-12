@@ -68,7 +68,7 @@ class TestFeatures(TestCase):
 
     def test_standard_scaler_single_feature(self):
         scaler = StandardScaler()
-        data = [[8], [4], [9], [2], [1]]
+        data = [[1], [2], [3], [4], [5]]
         # After fitting, the mean of a single feature should be 0
         scaler.fit(data)
         result = scaler.transform([[3]])  # This is the median and should be scaled to 0
