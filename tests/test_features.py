@@ -76,7 +76,6 @@ class TestFeatures(TestCase):
         # Check if the result is close enough to zero, allowing for floating point error.
         assert np.isclose(result, expected).all(), "Scaler transform for a single feature does not return expected value 0. Got: {}".format(result)
 
-    #Added test_standard_scaler_single_feature test to check scaling to mean of 0 is working properly or not
     
 if __name__ == '__main__':
     unittest.main()
